@@ -4,8 +4,6 @@ from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from recipes.models import (Favorites, Ingredient, IngredientInRecipe, Recipe,
-                            ShoppingCart, Tag)
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
@@ -19,6 +17,8 @@ from .permissions import IsAdminAuthorOrReadOnly, IsAdminOrReadOnly
 from .serializers import (IngredientSerializer, RecipeReadSerializer,
                           RecipeShortSerializer, RecipeWriteSerializer,
                           TagSerializer)
+from recipes.models import (Favorites, Ingredient, IngredientInRecipe, Recipe,
+                            ShoppingCart, Tag)
 
 
 class IngredientViewSet(ReadOnlyModelViewSet):
@@ -61,9 +61,8 @@ class RecipeViewSet(ModelViewSet):
     def favorite(self, request, pk):
         """Метод для добавления/удаления из избранного"""
         if request.method == 'POST':
-            return self.add_to(Favorites, request.user, pk)
-        else:
-            return self.delete_from(Favorites, request.user, pk)
+            return self.__add_to(Favorites, request.user, pk)
+        return self.__delete_from(Favorites, request.user, pk)
 
     @action(
         detail=True,
@@ -73,9 +72,8 @@ class RecipeViewSet(ModelViewSet):
     def shopping_cart(self, request, pk):
         """Метод для добавления/удаления из списка покупок"""
         if request.method == 'POST':
-            return self.add_to(ShoppingCart, request.user, pk)
-        else:
-            return self.delete_from(ShoppingCart, request.user, pk)
+            return self.__add_to(ShoppingCart, request.user, pk)
+        return self.__delete_from(ShoppingCart, request.user, pk)
 
     def add_to(self, model, user, pk):
         """Метод для добавления"""
