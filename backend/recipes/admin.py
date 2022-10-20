@@ -9,6 +9,7 @@ class IngredientInRecipeInline(admin.TabularInline):
     model = IngredientInRecipe
     min_num = 1
 
+
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'author', 'added_in_favorites')
