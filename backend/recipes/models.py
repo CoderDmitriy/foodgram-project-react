@@ -183,4 +183,4 @@ class ShoppingCart(models.Model):
         ]
 
     def __str__(self):
-        return f'{self.user.username} добавил "{self.recipe.id}" в Корзину покупок'
+        return f'{self.user.username} - {self.recipe.id}'
