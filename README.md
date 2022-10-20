@@ -9,7 +9,6 @@
 **Foodgram** - приложение в котором пользователи могут публиковать рецепты, добавлять чужие рецепты в избранное и подписываться на публикации других авторов. Сервис «Foodgram» позволяет пользователям создавать список продуктов, которые нужно купить для приготовления выбранных блюд.
 
 Проект доступен по адресу [foodgram-react.hopto.org](http://foodgram-react.hopto.org/)<br>
-Документация к API доступна [foodgram-react.hopto.org/api/docs](foodgram-react.hopto.org/api/docs/)<br>
 Админ-зона [foodgram-react.hopto.org/admin](http://foodgram-react.hopto.org/admin/)<br>
 
 ## ⚙ Используемые технологии:
