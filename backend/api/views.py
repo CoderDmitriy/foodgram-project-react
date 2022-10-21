@@ -76,7 +76,7 @@ class RecipeViewSet(ModelViewSet):
             return self.__add_to(ShoppingCart, request.user, pk)
         return self.__delete_from(ShoppingCart, request.user, pk)
 
-    def add_to(self, model, user, pk):
+    def __add_to(self, model, user, pk):
         """Метод для добавления"""
         if model.objects.filter(user=user, recipe__id=pk).exists():
             return Response({'errors': 'Рецепт уже добавлен!'},
@@ -86,7 +86,7 @@ class RecipeViewSet(ModelViewSet):
         serializer = RecipeShortSerializer(recipe)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    def delete_from(self, model, user, pk):
+    def __delete_from(self, model, user, pk):
         """Метод для удаления"""
         obj = model.objects.filter(user=user, recipe__id=pk)
         if obj.exists():

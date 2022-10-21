@@ -91,6 +91,8 @@ sudo docker compose exec backend python manage.py collectstatic --noinput
 ```
 sudo docker compose exec backend python manage.py loaddata ingredients.json
 ```
+Логин от суперюзера: Simplate@bk.ru
+Пароль от суперюзера: 16London
 
 ### Мои поздравления, ваш сервер работает! 😸
 Не забудьте добавить теги для блюд в админ-панели your-host/admin/

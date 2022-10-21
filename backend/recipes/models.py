@@ -18,7 +18,7 @@ class Ingredient(models.Model):
     class Meta:
         verbose_name = 'Ингредиент'
         verbose_name_plural = 'Ингредиенты'
-        ordering = ['-pk']
+        ordering = ('name',)
         constraints = [
             UniqueConstraint(
                 fields=('name', 'measurement_unit'),
@@ -183,4 +183,4 @@ class ShoppingCart(models.Model):
         ]
 
     def __str__(self):
-        return f'{self.user.username} - {self.recipe.id}'
+        return f'{self.user.username} добавил "{self.recipe.id}" в Корзину покупок'
